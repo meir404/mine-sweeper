@@ -13,7 +13,7 @@ export class AppComponent implements OnInit {
   public content = '';
 
   ngOnInit(): void {
-    this.createBoard(10, 10 );
+    this.createBoard(10, 15);
     this.setCounter();
   }
 
@@ -41,8 +41,8 @@ export class AppComponent implements OnInit {
       });
 
     }
-    const isEmptyCell = this.boardArray.some(line=> line.some(c=>!c.isShow && c.value !== this.mine));
-    if(!isEmptyCell){
+    const isEmptyCell = this.boardArray.some(line => line.some(c => !c.isShow && c.value !== this.mine));
+    if (!isEmptyCell) {
       this.alert = true;
       this.content = 'Win';
     }
@@ -65,31 +65,14 @@ export class AppComponent implements OnInit {
   }
 
   getCellsAround(y: number, x: number) {
-    const size = this.boardArray.length - 1;
+    const size = this.boardArray.length;
     const cellsAround: { y: number, x: number }[] = [];
-    if (x !== 0 && y !== 0) {
-      cellsAround.push({x: x - 1, y: y - 1});
-    }
-    if (y !== 0) {
-      cellsAround.push({x: x, y: y - 1});
-    }
-    if (y !== 0 && x < size) {
-      cellsAround.push({x: x + 1, y: y - 1});
-    }
-    if (x !== 0) {
-      cellsAround.push({x: x - 1, y: y});
-    }
-    if (x < size) {
-      cellsAround.push({x: x + 1, y: y});
-    }
-    if (x !== 0 && y < size) {
-      cellsAround.push({x: x - 1, y: y + 1});
-    }
-    if (y < size) {
-      cellsAround.push({x: x, y: y + 1});
-    }
-    if (x < size && y < size) {
-      cellsAround.push({x: x + 1, y: y + 1});
+    for (let ys = y - 1; ys <= y + 1; ys++) {
+      for (let xs = x - 1; xs <= x + 1; xs++) {
+        if (xs >= 0 && xs < size && ys >= 0 && ys < size && !(x === xs && y === ys)) {
+            cellsAround.push({x: xs, y: ys});
+        }
+      }
     }
     return cellsAround;
   }
@@ -97,7 +80,7 @@ export class AppComponent implements OnInit {
   createBoard(size: number, numberOfMine: number) {
     const array: Cell[] = [];
     for (let i = 0; i < size * size; i++) {
-      array.push({value: '', isShow: false});
+      array.push({value: '', isShow: true});
     }
     this.setMineLocation(size, numberOfMine, array);
     for (let i = 0; i < size; i++) {
