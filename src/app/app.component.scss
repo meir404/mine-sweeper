@@ -1,0 +1,29 @@
+.cell{
+  width: 40px;
+  height: 40px;
+  border: 1px solid black;
+}
+.line{
+  display: flex;
+}
+.Mine{
+  background-color: red;
+}
+.cover{
+  display: block;
+  width: 38px;
+  height: 38px;
+  background-color: black !important;
+}
+.container{
+  position: relative;
+}
+.game-over{
+  position: absolute;
+  background: beige;
+  border: 3px dashed black;
+  width: 200px;
+  height: 200px;
+  top:50px;
+  left:50px;
+}
