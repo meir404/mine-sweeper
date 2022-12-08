@@ -1,6 +1,9 @@
 # MineSweeper
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 12.0.0.
+![image](https://user-images.githubusercontent.com/44411997/206432567-f5db293b-4b2e-469a-9d18-4ad1486276a3.png)
+
+![image](https://user-images.githubusercontent.com/44411997/206432813-f053c0cd-9528-46a6-acf6-f50cce9ac039.png)
 
 ## Development server
 
